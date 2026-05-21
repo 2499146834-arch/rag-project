@@ -1,0 +1,11 @@
+.env
+data/
+embeddings/
+qdrant_storage/
+*.npy
+*.pkl
+api_usage.json
+pipeline_state.json
+__pycache__/
+*.pyc
+evaluation/*.jsonl

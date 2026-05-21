@@ -1,0 +1,7 @@
+strategy,context_precision,context_recall
+bm25,0.1887,0.4650
+dense,0.3007,0.4700
+hybrid_rrf,0.2589,0.3462
+hybrid_hyde,0.1596,0.3933
+hybrid_hyde_rerank,0.3785,0.5102
+agentic,0.0667,0.1429
