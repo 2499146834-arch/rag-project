@@ -3,6 +3,16 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).parent.resolve()
 
+# Auto-load .env
+_env_path = PROJECT_ROOT / ".env"
+if _env_path.exists():
+    for _line in _env_path.read_text(encoding="utf-8").split("\n"):
+        _line = _line.strip().replace("\r", "")
+        if "=" in _line and not _line.startswith("#"):
+            _k, _v = _line.split("=", 1)
+            if _k.strip() and _v.strip():
+                os.environ[_k.strip()] = _v.strip()
+
 # API
 RAG_API_KEY = os.getenv("RAG_API_KEY")
 RAG_BASE_URL = os.getenv("RAG_BASE_URL", "https://api.aipaibox.com")
