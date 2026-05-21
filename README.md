@@ -2,6 +2,8 @@
 
 A production-grade RAG retrieval benchmark system comparing 6 strategies on MS MARCO 10K, with GPU-accelerated local embeddings, Qdrant vector database, and RAGAS evaluation backed by Claude Sonnet 4.6.
 
+📄 **Experiment Report**: [docs/experiment_report.docx](docs/experiment_report.docx)
+
 ## Architecture
 
 ```mermaid
