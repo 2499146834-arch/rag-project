@@ -66,11 +66,11 @@ def results_chart(name: str):
 # ═══════════════════════════════════════════════════════════
 #  Streamlit Frontend
 # ═══════════════════════════════════════════════════════════
-STREAMLIT_CODE = r'''
-import sys, json
-from pathlib import Path
-sys.path.insert(0, str(Path(__file__).parent.parent))
-sys.path.insert(0, str(Path(__file__).parent))
+_STREAMLIT_CODE = r'''
+import sys, json, os
+PROJECT_ROOT = os.environ.get("RAG_PROJECT_ROOT", os.getcwd())
+sys.path.insert(0, PROJECT_ROOT)
+sys.path.insert(0, os.path.join(PROJECT_ROOT, "scripts"))
 from config import EVAL_DIR, RESULTS_DIR
 from retrieval import STRATEGIES, retrieve, load_data
 
@@ -153,11 +153,10 @@ GET /results/chart/{name}  Radar/bar chart PNG
 
 
 def run_streamlit():
-    import subprocess, tempfile
-    with tempfile.NamedTemporaryFile(suffix=".py", mode="w", delete=False, encoding="utf-8") as f:
-        f.write(STREAMLIT_CODE)
-        tmp_path = f.name
-    subprocess.run([sys.executable, "-m", "streamlit", "run", tmp_path, "--server.port", "8501"])
+    import subprocess
+    app_path = str(Path(__file__).parent / "streamlit_app.py")
+    subprocess.run([sys.executable, "-m", "streamlit", "run", app_path,
+                    "--server.port", "8501", "--server.headless", "true"])
 
 
 if __name__ == "__main__":
