@@ -13,6 +13,7 @@ MODEL_HAIKU = "claude-sonnet-4-6"
 DATA_DIR = PROJECT_ROOT / "data"
 EMBED_DIR = PROJECT_ROOT / "embeddings"
 EVAL_DIR = PROJECT_ROOT / "evaluation"
+RESULTS_DIR = PROJECT_ROOT / "results"
 QDRANT_STORAGE = PROJECT_ROOT / "qdrant_storage"
 STATE_FILE = PROJECT_ROOT / "pipeline_state.json"
 API_USAGE_FILE = PROJECT_ROOT / "api_usage.json"
@@ -48,5 +49,5 @@ COST_PER_1M_OUTPUT = 15.0
 RAGAS_LLM_TIMEOUT = 120
 RAGAS_MAX_RETRIES = 3
 
-for d in [DATA_DIR, EMBED_DIR, EVAL_DIR, QDRANT_STORAGE]:
+for d in [DATA_DIR, EMBED_DIR, EVAL_DIR, RESULTS_DIR, QDRANT_STORAGE]:
     d.mkdir(parents=True, exist_ok=True)
